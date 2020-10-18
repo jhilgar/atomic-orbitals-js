@@ -1,6 +1,6 @@
-var n = 5;
-var l = 3;
-var m = 2;
+var n = 6;
+var l = 2;
+var m = 1;
 
 // Standard factorial
 function sFact(x) {
@@ -109,7 +109,7 @@ for (var i = -d; i <= d; i += dn) {
     for (var k = -d; k <= d; k += dn) {
       r = Math.sqrt(i ** 2 + j ** 2 + k ** 2);
       theta = Math.acos(k / r);
-      phi = Math.atan(j / i);
+      phi = Math.atan2(j, i);
       x.push(i);
       y.push(j);
       z.push(k);
@@ -126,8 +126,8 @@ var data = [
         y: y,
         z: z,
         value: orbital,
-        isomin: -1/(n ** 2.9),
-        isomax: 1/(n ** 2.9),
+        isomin: -1/(n ** 2.95),
+        isomax: 1/(n ** 2.95),
         surface: {show: true, count: 6, fill: 0.3},
         showscale: false,
         caps: {
@@ -139,11 +139,9 @@ var data = [
 ];
 
 var layout = {
-  width: 800,
-  height: 800,
     hovermode: false,
     hoverinfo: 'none',
-    margin: {t:0, l:0, b:0},
+    margin: {t:0, l:0, b:0, r:0},
     scene: {
         camera: {
             eye: {
@@ -170,4 +168,6 @@ var layout = {
     }
 };
 
-Plotly.newPlot('myDiv', data, layout);
+var config = {responsive: true}
+
+Plotly.newPlot('myDiv', data, layout, config);
